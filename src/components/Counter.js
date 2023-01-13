@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { counterAction } from "../store/store";
 
 import classes from "./Counter.module.css";
 
@@ -16,19 +17,19 @@ const Counter = () => {
 
   const dispatch = useDispatch();
 
-  //dispatchng increment functon
+  //dispatchng increment method stored in counterAction 
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterAction.increament());
   };
 
-  //dispatching decrement function
+  //dispatchng decrement method stored in counterAction 
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterAction.decreament());
   };
 
-  //dispatching increment function with amount as a payload
+  //dispatchng increase method stored in counterAction with 5 as a payload 
   const addFive = () => {
-    dispatch({ type: "increase", amount: 5 });
+    dispatch(counterAction.increase(5));
   };
 
   //dispatchng increment function with user input as a payload
@@ -42,7 +43,7 @@ const Counter = () => {
       value = Number(input);
     }
 
-    dispatch({ type: "userAdd", value });
+    dispatch(counterAction.userAdd(value));
   };
 
   return (
